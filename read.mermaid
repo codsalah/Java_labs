@@ -1,0 +1,93 @@
+classDiagram
+    CgComment --> CgObj
+    Typedef --> CgObj
+    Conference --> CgObj
+    Isa --> CgObj
+    Cgc --> CgObj
+    Cgr --> CgObj
+    Cg --> CgObj
+    IsaKind --> CgObj
+
+    class CgObj {
+        +long serialVersionUID
+        +String toHTML
+    }
+
+    class CgComment {
+        -long serialVersionUID
+        +int key
+        +String comment
+        +CgComment()
+        +String toString()
+    }
+
+    class Typedef {
+        -long serialVersionUID
+        +int cdkey
+        +int key
+        +String name
+        +Typedef()
+        +String toString()
+        +String getTreeName()
+    }
+
+    class Conference {
+        -long serialVersionUID
+        +int toId
+        +int fromId
+        +String name
+        +Conference()
+        +String toString()
+    }
+
+    class Isa {
+        -long serialVersionUID
+        +String parent
+        +String child
+        +Isa()
+        +String toString()
+    }
+
+    class Cgc {
+        -long serialVersionUID
+        +String[] fs
+        +int key
+        +int cdkey
+        +int type
+        +int simple
+        +int situation
+        +String name
+        +String comment
+        +Cgc()
+        +String toString()
+        +String getTreeName()
+    }
+
+    class Cgr {
+        -long serialVersionUID
+        +int fromId
+        +int toId
+        +String name
+        +String comment
+        +Cgr()
+        +String toString()
+    }
+
+    class Cg {
+        -long serialVersionUID
+        +String[] fs
+        +int key
+        +Cg()
+        +String toString()
+        +String toHTML()
+        +String getTreeName()
+    }
+
+    class IsaKind {
+        -long serialVersionUID
+        +String isaObject
+        +String[] characteristics
+        +String[] subtypes
+        +IsaKind()
+        +String toString()
+    }
