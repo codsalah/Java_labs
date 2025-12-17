@@ -16,7 +16,7 @@ public class FontPanel extends JPanel {
     private int fontSize = 20;
 
     public FontPanel() {
-        // Tookit way of doing it
+        // Toolkit way of doing it
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         System.out.println("Toolkit screen resolution: " + toolkit.getScreenResolution());
 
