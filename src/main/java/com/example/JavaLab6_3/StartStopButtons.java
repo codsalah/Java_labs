@@ -23,7 +23,7 @@ public class StartStopButtons {
         JButton stopButton = new JButton("Pause");
 
         // add action listeners to the buttons
-        startButton.addActionListener(e -> ballPanel.startBall());
+        startButton.addActionListener(e -> ballPanel.startBall()); //
         stopButton.addActionListener(e -> ballPanel.pauseBall());
 
         // add the buttons to the button panel
