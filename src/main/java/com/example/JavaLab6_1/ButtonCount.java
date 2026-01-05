@@ -1,5 +1,6 @@
 package com.example.JavaLab6_1;
 
+///////////////////////////////////////////////////////////
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,27 +18,43 @@ public class ButtonCount {
         // Use a JPanel to hold components
         JPanel panel = new JPanel();
 
-        JButton button = createButton();
+        JButton buttonUp = createUpButton();
+        JButton buttonDown = createDownButton();
         label = showCountInLabel();
 
-        panel.add(button);
+        panel.add(buttonUp);
+        panel.add(buttonDown);
         panel.add(label);
 
         frame.add(panel);
         frame.setVisible(true);
     }
 
-    public static JButton createButton() {
-        JButton button = new JButton("Click");
+    public static JButton createUpButton() {
+        JButton button = new JButton("Up");
         button.addActionListener(e -> {
-            countButton();
+            countUpButton();
             label.setText("Button clicked " + count + " times");
         });
         return button;
     }
 
-    public static void countButton() {
+    public static JButton createDownButton() {
+        JButton button = new JButton("Down");
+        button.addActionListener(e -> {
+            countDownButton();
+            label.setText("Button clicked " + count + " times");
+        });
+        return button;
+    }
+
+    public static void countUpButton() {
         count++;
+        // System.out.println("Button clicked " + count + " times");
+    }
+
+    public static void countDownButton() {
+        count--;
         // System.out.println("Button clicked " + count + " times");
     }
 
