@@ -12,21 +12,53 @@ public class DragOval {
 
         OvalPanel panel = new OvalPanel();
         frame.add(panel);
-        frame.setLayout(null);
         frame.setVisible(true);
     }
 
     static class OvalPanel extends JPanel {
-        private int OvalX = 100;
-        private int OvalY = 100;
-        private final int OvalWidth = 50;
-        private final int OvalHeight = 50;
+        private int ovalX = 100;
+        private int ovalY = 100;
+        private final int ovalWidth = 50;
+        private final int ovalHeight = 50;
 
         private boolean dragging = false;
         private int offsetX, offsetY;
 
         public OvalPanel() {
-            // Mouse listener to detect links
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getX() >= ovalX && e.getX() <= ovalX + ovalWidth &&
+                            e.getY() >= ovalY && e.getY() <= ovalY + ovalHeight) {
+                        dragging = true;
+                        offsetX = e.getX() - ovalX;
+                        offsetY = e.getY() - ovalY;
+                    }
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    dragging = false;
+                }
+            });
+
+            addMouseMotionListener(new MouseMotionAdapter() {
+                @Override
+                public void mouseDragged(MouseEvent e) {
+                    if (dragging) {
+                        ovalX = e.getX() - offsetX;
+                        ovalY = e.getY() - offsetY;
+                        repaint();
+                    }
+                }
+            });
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.setColor(Color.BLUE);
+            g.fillOval(ovalX, ovalY, ovalWidth, ovalHeight);
         }
     }
 }
