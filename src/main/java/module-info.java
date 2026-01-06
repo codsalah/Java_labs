@@ -3,6 +3,7 @@ module JavaCourseWithLabs {
     requires javafx.fxml;
     requires java.desktop;
     requires simplyhtml;
+    requires javafx.graphics;
 
     exports com.example.Java2Lab_01;
     exports com.example.JavaLab1;
